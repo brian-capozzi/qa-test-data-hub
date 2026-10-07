@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Test Data Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; background-color: #f8fafc; color: #1e293b; }
+        header { background: #ffffff; padding: 16px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
+        button, select, input { font-size: 14px; touch-action: manipulation; }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body class="h-full font-sans text-slate-800 dark:text-slate-100 dark:bg-slate-900 transition-colors duration-200">
+    <div class="min-h-full flex flex-col">
+        <!-- Header -->
+        <header class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 px-6 py-3.5 flex items-center justify-between shadow-sm">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 text-white p-2 rounded-xl shadow-md">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 00-2 2v14a2 2 0 002 2h6a2 2 0 002-2V6a2 2 0 00-2-2h-6zM5 8h2m-2 4h2m-2 4h2"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">QA Test Data Hub</h1>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Essential test data suite for developers & QA pros</p>
+                </div>
+            </div>
+
+            <button id="themeToggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition">
+                <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+            </button>
+        </header>
+
+        <!-- Main Workspace -->
+        <div class="flex-1 flex flex-col md:flex-row overflow-hidden">
+            <!-- Sidebar Navigation -->
+            <aside class="w-full md:w-64 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 flex flex-col">
+                <nav class="p-4 space-y-1">
+                    <button id="tabBtn-text" class="tab-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm transition bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        <span>Text Generator</span>
+                    </button>
+                    <button id="tabBtn-image" class="tab-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <span>Image Generator</span>
+                    </button>
+                    <button id="tabBtn-data" class="tab-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s-8-1.79-8-4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                        <span>Files & Structured Data</span>
+                    </button>
+                </nav>
+            </aside>
+
+            <!-- Main Panel -->
+            <main class="flex-1 overflow-y-auto p-6 bg-slate-50 dark:bg-slate-900">
+                <!-- TAB 1: TEXT GENERATOR -->
+                <div id="tab-text" class="tab-content">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                        <!-- Controls -->
+                        <div class="lg:col-span-5 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-6">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Unit Type</label>
+                                <div class="grid grid-cols-4 gap-1 p-1 bg-slate-100 dark:bg-slate-700/50 rounded-xl">
+                                    <button id="unit-characters" class="unit-btn text-xs font-medium py-2 rounded-lg transition text-slate-600 dark:text-slate-300">Chars</button>
+                                    <button id="unit-words" class="unit-btn text-xs font-medium py-2 rounded-lg transition text-slate-600 dark:text-slate-300">Words</button>
+                                    <button id="unit-sentences" class="unit-btn text-xs font-medium py-2 rounded-lg transition bg-white dark:bg-slate-800 shadow text-blue-600 font-semibold">Sentences</button>
+                                    <button id="unit-paragraphs" class="unit-btn text-xs font-medium py-2 rounded-lg transition text-slate-600 dark:text-slate-300">Paras</button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <label class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Quantity</label>
+                                    <span id="qtyVal" class="text-sm font-bold text-blue-600 dark:text-blue-400">5</span>
+                                </div>
+                                <input type="range" id="qtyInput" min="1" max="100" value="5" class="w-full accent-blue-600 cursor-pointer">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Theme Dictionary</label>
+                                <select id="themeSelect" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-300 dark:border-slate-600 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                                    <option value="classic">Classic Lorem Ipsum</option>
+                                    <option value="baseball" selected>⚾ Baseball</option>
+                                    <option value="football">🏈 Football</option>
+                                    <option value="hockey">🏒 Hockey</option>
+                                    <option value="gaming">🎮 Gaming</option>
+                                    <option value="music">🎵 Music</option>
+                                    <option value="foodie">🍳 Foodie</option>
+                                    <option value="corporate">🏢 Corporate Jargon</option>
+                                    <option value="cyberpunk">⚡ Cyberpunk</option>
+                                    <option value="pirate">🏴‍☠️ Pirate / High Seas</option>
+                                    <option value="barista">☕ Barista / Coffee</option>
+                                    <option value="fantasy">🧙‍♂️ Fantasy RPG</option>
+                                    <option value="feline">🐾 Feline / Cat Life</option>
+                                </select>
+                            </div>
+
+                            <div class="border-t border-slate-200 dark:border-slate-700 pt-4">
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">QA Edge Cases</label>
+                                <div class="space-y-3">
+                                    <label class="flex items-center justify-between cursor-pointer">
+                                        <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Inject Special / Accented Chars</span>
+                                        <input type="checkbox" id="edgeSpecial" class="w-4 h-4 text-blue-600 rounded border-slate-300">
+                                    </label>
+                                    <label class="flex items-center justify-between cursor-pointer">
+                                        <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Wrap with HTML Tags (&lt;b&gt;, &lt;i&gt;)</span>
+                                        <input type="checkbox" id="edgeHtml" class="w-4 h-4 text-blue-600 rounded border-slate-300">
+                                    </label>
+                                    <label class="flex items-center justify-between cursor-pointer">
+                                        <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Insert Zero-Width Spaces (\u200B)</span>
+                                        <input type="checkbox" id="edgeZeroWidth" class="w-4 h-4 text-blue-600 rounded border-slate-300">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Output -->
+                        <div class="lg:col-span-7 flex flex-col space-y-4">
+                            <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex-1 flex flex-col overflow-hidden">
+                                <div class="px-5 py-3 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/50">
+                                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Generated Text</span>
+                                    <div class="text-xs text-slate-500 dark:text-slate-400 space-x-3">
+                                        <span id="metricChars">0 chars</span>
+                                        <span>•</span>
+                                        <span id="metricWords">0 words</span>
+                                        <span>•</span>
+                                        <span id="metricSentences">0 sentences</span>
+                                    </div>
+                                </div>
+                                <div class="p-6 flex-1 overflow-y-auto min-h-[320px]">
+                                    <div id="textOutput" class="text-slate-800 dark:text-slate-200 leading-relaxed whitespace-pre-wrap select-all"></div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap gap-3">
+                                <button id="btnCopyText" class="flex-1 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium text-sm shadow-sm transition">Copy Text</button>
+                                <button id="btnCopyJson" class="flex-1 px-4 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl font-medium text-sm shadow-sm transition">Copy JSON</button>
+                                <button id="btnDownloadText" class="flex-1 px-4 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl font-medium text-sm shadow-sm transition">Download (.txt)</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: IMAGE GENERATOR -->
+                <div id="tab-image" class="tab-content hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                        <!-- Controls -->
+                        <div class="lg:col-span-5 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-6">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Aspect Ratio Presets</label>
+                                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2" id="presetButtonsGroup">
+                                    <button data-aspect="16:9" class="ratio-preset-btn px-3 py-2 text-xs font-medium border rounded-xl transition bg-blue-600 text-white border-blue-600 shadow-sm">16:9 (Hero)</button>
+                                    <button data-aspect="1:1" class="ratio-preset-btn px-3 py-2 text-xs font-medium border rounded-xl transition border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">1:1 (Square)</button>
+                                    <button data-aspect="3:2" class="ratio-preset-btn px-3 py-2 text-xs font-medium border rounded-xl transition border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">3:2 (Blog)</button>
+                                    <button data-aspect="9:16" class="ratio-preset-btn px-3 py-2 text-xs font-medium border rounded-xl transition border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">9:16 (Story)</button>
+                                    <button data-aspect="3:1" class="ratio-preset-btn px-3 py-2 text-xs font-medium border rounded-xl transition border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">3:1 (Banner)</button>
+                                    <button data-aspect="4:1" class="ratio-preset-btn px-3 py-2 text-xs font-medium border rounded-xl transition border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">4:1 (Ultra-Wide)</button>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Width (px)</label>
+                                    <input type="number" id="imgWidth" value="1920" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700/50 border border-slate-300 dark:border-slate-600 rounded-xl text-sm font-medium">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Height (px)</label>
+                                    <input type="number" id="imgHeight" value="1080" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700/50 border border-slate-300 dark:border-slate-600 rounded-xl text-sm font-medium">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Background Color</label>
+                                    <input type="color" id="imgBgColor" value="#3b82f6" class="w-full h-10 rounded-xl cursor-pointer border-0">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Text Color</label>
+                                    <input type="color" id="imgTextColor" value="#ffffff" class="w-full h-10 rounded-xl cursor-pointer border-0">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Overlay Pattern</label>
+                                <select id="imgPattern" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-300 dark:border-slate-600 rounded-xl text-sm font-medium">
+                                    <option value="grid">Technical Grid</option>
+                                    <option value="crosshairs">Center Crosshairs</option>
+                                    <option value="diagonal">Diagonal Lines</option>
+                                    <option value="none">Solid Fill</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Custom Label Text</label>
+                                <input type="text" id="imgLabel" placeholder="Leave empty for dynamic dimensions" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700/50 border border-slate-300 dark:border-slate-600 rounded-xl text-sm font-medium">
+                            </div>
+                        </div>
+
+                        <!-- Preview Canvas -->
+                        <div class="lg:col-span-7 flex flex-col space-y-4">
+                            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex-1 flex flex-col items-center justify-center min-h-[350px]">
+                                <canvas id="imageCanvas" class="max-w-full max-h-[400px] border border-slate-200 dark:border-slate-700 rounded-lg shadow-md object-contain"></canvas>
+                            </div>
+
+                            <div class="flex gap-3">
+                                <button id="btnDownloadPng" class="flex-1 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium text-sm shadow-sm transition">Download PNG</button>
+                                <button id="btnCopyDataUri" class="flex-1 px-4 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl font-medium text-sm shadow-sm transition">Copy Data URI</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: DUMMY FILES & STRUCTURED DATA GENERATOR -->
+                <div id="tab-data" class="tab-content hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                        <!-- Controls Panel -->
+                        <div class="lg:col-span-5 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-6">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">File Format</label>
+                                <select id="fileTypeSelect" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-300 dark:border-slate-600 rounded-xl text-sm font-medium">
+                                    <option value="pdf">PDF - Portable Document Format (.pdf)</option>
+                                    <option value="doc">DOC - Word Document Payload (.doc / .docx)</option>
+                                    <option value="ppt">PPT - PowerPoint Slides Payload (.ppt / .pptx)</option>
+                                    <option value="csv">CSV - Comma Separated Values (.csv)</option>
+                                    <option value="json">JSON - REST Array Payload (.json)</option>
+                                    <option value="xml">XML - Data Document (.xml)</option>
+                                    <option value="txt">Plain Text (.txt)</option>
+                                    <option value="size_boundary">Exact File Size Payload (Upload Test)</option>
+                                    <option value="zero_byte">0-Byte Empty File (Boundary Test)</option>
+                                </select>
+                            </div>
+
+                            <!-- Structured Data Options -->
+                            <div id="structuredOptions" class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between items-center mb-1">
+                                        <label class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Record Rows / Document Sections</label>
+                                        <span id="fileRowCountVal" class="text-sm font-bold text-blue-600 dark:text-blue-400">25</span>
+                                    </div>
+                                    <input type="range" id="fileRowCount" min="5" max="500" value="25" class="w-full accent-blue-600 cursor-pointer">
+                                </div>
+                            </div>
+
+                            <!-- File Size Boundary Options -->
+                            <div id="sizeBoundaryOptions" class="hidden space-y-4">
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Target Payload Size</label>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <button data-size="0.1" class="size-btn px-3 py-2 text-xs font-medium border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-slate-50 transition">100 KB</button>
+                                    <button data-size="1" class="size-btn px-3 py-2 text-xs font-medium border border-slate-200 dark:border-slate-700 rounded-xl bg-blue-600 text-white shadow-sm">1 MB</button>
+                                    <button data-size="5" class="size-btn px-3 py-2 text-xs font-medium border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-slate-50 transition">5 MB</button>
+                                    <button data-size="10" class="size-btn px-3 py-2 text-xs font-medium border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-slate-50 transition">10 MB</button>
+                                </div>
+                            </div>
+
+                            <!-- Zero Byte Options -->
+                            <div id="zeroByteOptions" class="hidden space-y-4">
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Extension</label>
+                                <select id="zeroByteExt" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-300 dark:border-slate-600 rounded-xl text-sm font-medium">
+                                    <option value="pdf">.pdf (Empty PDF Document)</option>
+                                    <option value="doc">.doc (Empty Word Doc)</option>
+                                    <option value="docx">.docx (Empty OOXML Word Doc)</option>
+                                    <option value="ppt">.ppt (Empty PowerPoint File)</option>
+                                    <option value="pptx">.pptx (Empty OOXML Presentation)</option>
+                                    <option value="csv">.csv (Empty CSV File)</option>
+                                    <option value="txt">.txt (Empty Text File)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Preview & Download Panel -->
+                        <div class="lg:col-span-7 flex flex-col space-y-4">
+                            <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex-1 flex flex-col overflow-hidden">
+                                <div class="px-5 py-3 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/50">
+                                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">File Data Preview</span>
+                                    <span id="fileSizeMetric" class="text-xs font-medium text-slate-500 dark:text-slate-400">0 KB</span>
+                                </div>
+                                <div class="p-6 flex-1 overflow-y-auto min-h-[320px] max-h-[420px]">
+                                    <pre id="fileContentPreview" class="text-xs font-mono text-slate-800 dark:text-slate-200 leading-relaxed whitespace-pre-wrap select-all"></pre>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-3">
+                                <button id="btnDownloadFile" class="flex-1 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium text-sm shadow-sm transition">Download Generated File</button>
+                                <button id="btnCopyFile" class="flex-1 px-4 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl font-medium text-sm shadow-sm transition">Copy Content</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white dark:bg-white dark:text-slate-900 px-4 py-3 rounded-xl shadow-xl text-sm font-medium transition transform translate-y-20 opacity-0 z-50">
+        <span id="toastMsg">Action complete!</span>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const THEMES = {
+                classic: ["lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit", "sed", "do", "eiusmod", "tempor"],
+                baseball: ["dugout", "inning", "batter", "dinger", "line-drive", "umpire", "bullpen", "stolen base", "walk-off", "grand slam", "can-of-corn", "golden sombrero", "frozen rope", "southpaw", "moonshot"],
+                football: ["gridiron", "huddle", "blitz", "flea-flicker", "touchdown", "audible", "endzone", "field goal", "draft", "nickelback", "Hail Mary", "pick-six", "hard count", "pigskin"],
+                hockey: ["hat trick", "slap shot", "blue line", "power play", "zamboni", "faceoff", "sin bin", "neutral zone", "top shelf", "one-timer", "five-hole", "biscuit", "barnburner"],
+                gaming: ["respawn", "side quest", "loot box", "boss fight", "speedrun", "aggro", "hit points", "mana", "clutch", "nerd rage", "gank", "nerfed", "buffed", "RNGesus", "git gud"],
+                music: ["chorus", "bridge", "riff", "treble", "bass drop", "crescendo", "vinyl", "syncopation", "octave", "pitch bend", "soundcheck", "encore", "metronome"],
+                foodie: ["umami", "reduction", "artisanal", "sous-vide", "flame-broiled", "compote", "al dente", "truffle oil", "deglaze", "charcuterie", "infused", "mouthfeel"],
+                corporate: ["synergy", "low-hanging fruit", "bandwidth", "core competency", "circle back", "move the needle", "pivot", "touch base", "action item", "boilerplate", "deliverable"],
+                cyberpunk: ["mainframe", "neural link", "neon", "augmented", "darknet", "firewall", "glitch", "cyberdeck", "subnet", "cipher", "ICE", "synthwave", "chrome"],
+                pirate: ["ahoy", "scallywag", "blimey", "marooned", "doubloons", "kraken", "walk the plank", "shiver me timbers", "landlubber", "buccaneer", "crow's nest", "jolly roger"],
+                barista: ["espresso", "cortado", "oat milk", "crema", "pour-over", "blonde roast", "macchiato", "tamp", "steam wand", "single-origin", "cupping", "French press"],
+                fantasy: ["tavern", "dragon", "critical roll", "potion", "spellbook", "dungeon master", "paladin", "saving throw", "mimic", "necromancer", "enchanted"],
+                feline: ["meow", "purr", "zoomies", "toe beans", "knead", "catnip", "hiss", "slow blink", "loaf", "scratching post", "whisker", "headbutt", "litter box"]
+            };
+
+            const FILLERS = ["the", "a", "an", "and", "or", "but", "with", "in", "on", "at", "by", "for", "to", "from"];
+
+            let currentUnit = 'sentences';
+            let currentGeneratedText = "";
+            let targetBoundaryMB = 1;
+            let generatedFileContent = "";
+            let generatedFileName = "data.csv";
+            let generatedMimeType = "text/csv";
+
+            // Dark theme toggle
+            document.getElementById('themeToggle').addEventListener('click', function () {
+                document.documentElement.classList.toggle('dark');
+            });
+
+            // Tab switching
+            function switchTab(tabName) {
+                document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.tab-btn').forEach(el => {
+                    el.classList.remove('bg-blue-50', 'text-blue-700', 'dark:bg-blue-900/30', 'dark:text-blue-400');
+                    el.classList.add('text-slate-600', 'dark:text-slate-400');
+                });
+
+                document.getElementById('tab-' + tabName).classList.remove('hidden');
+                const activeBtn = document.getElementById('tabBtn-' + tabName);
+                activeBtn.classList.remove('text-slate-600', 'dark:text-slate-400');
+                activeBtn.classList.add('bg-blue-50', 'text-blue-700', 'dark:bg-blue-900/30', 'dark:text-blue-400');
+
+                if (tabName === 'image') renderImage();
+                if (tabName === 'data') updateFileData();
+            }
+
+            document.getElementById('tabBtn-text').addEventListener('click', () => switchTab('text'));
+            document.getElementById('tabBtn-image').addEventListener('click', () => switchTab('image'));
+            document.getElementById('tabBtn-data').addEventListener('click', () => switchTab('data'));
+
+            // Unit buttons
+            ['characters', 'words', 'sentences', 'paragraphs'].forEach(unit => {
+                document.getElementById('unit-' + unit).addEventListener('click', function () {
+                    currentUnit = unit;
+                    document.querySelectorAll('.unit-btn').forEach(btn => {
+                        btn.className = 'unit-btn text-xs font-medium py-2 rounded-lg transition text-slate-600 dark:text-slate-300';
+                    });
+                    this.className = 'unit-btn text-xs font-medium py-2 rounded-lg transition bg-white dark:bg-slate-800 shadow text-blue-600 font-semibold';
+                    updateText();
+                });
+            });
+
+            function generateSentence(words) {
+                const len = Math.floor(Math.random() * 8) + 5;
+                const res = [];
+                for (let i = 0; i < len; i++) {
+                    const pool = Math.random() < 0.65 ? words : FILLERS;
+                    res.push(pool[Math.floor(Math.random() * pool.length)]);
+                }
+                res[0] = res[0].charAt(0).toUpperCase() + res[0].slice(1);
+                if (len > 8 && Math.random() < 0.3) res[Math.floor(len / 2)] += ",";
+                const endPunct = Math.random() < 0.85 ? "." : (Math.random() < 0.5 ? "!" : "?");
+                return res.join(" ") + endPunct;
+            }
+
+            function escapeHtml(t) { return t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+
+            function updateText() {
+                const qty = parseInt(document.getElementById('qtyInput').value);
+                document.getElementById('qtyVal').innerText = qty;
+                const themeWords = THEMES[document.getElementById('themeSelect').value] || THEMES.classic;
+
+                let result = "";
+                if (currentUnit === 'sentences') {
+                    const s = []; for (let i = 0; i < qty; i++) s.push(generateSentence(themeWords));
+                    result = s.join(" ");
+                } else if (currentUnit === 'paragraphs') {
+                    const p = [];
+                    for (let i = 0; i < qty; i++) {
+                        const s = []; for (let j = 0; j < Math.floor(Math.random() * 4) + 3; j++) s.push(generateSentence(themeWords));
+                        p.push(s.join(" "));
+                    }
+                    result = p.join("\n\n");
+                } else if (currentUnit === 'words') {
+                    const w = []; for (let i = 0; i < qty; i++) w.push((Math.random() < 0.7 ? themeWords : FILLERS)[Math.floor(Math.random() * 10)]);
+                    if (w.length > 0) w[0] = w[0].charAt(0).toUpperCase() + w[0].slice(1);
+                    result = w.join(" ") + ".";
+                } else if (currentUnit === 'characters') {
+                    let temp = ""; while (temp.length < qty) temp += generateSentence(themeWords) + " ";
+                    result = temp.substring(0, qty);
+                }
+
+                if (document.getElementById('edgeSpecial').checked) {
+                    const symbols = ["@", "#", "$", "%", "&", "ñ", "é"];
+                    result = result.replace(/ /g, () => (Math.random() < 0.08 ? ` ${symbols[Math.floor(Math.random() * symbols.length)]} ` : " "));
+                }
+                if (document.getElementById('edgeZeroWidth').checked) {
+                    result = result.replace(/\b\w{6,}\b/g, (w) => w.slice(0, 3) + "\u200B" + w.slice(3));
+                }
+                if (document.getElementById('edgeHtml').checked) {
+                    result = result.split(" ").map(w => Math.random() < 0.1 ? `<b>${w}</b>` : (Math.random() < 0.05 ? `<i>${w}</i>` : w)).join(" ");
+                }
+
+                currentGeneratedText = result;
+                document.getElementById('textOutput').innerHTML = document.getElementById('edgeHtml').checked ? result : escapeHtml(result);
+
+                const cleanText = result.replace(/<[^>]*>?/gm, '');
+                document.getElementById('metricChars').innerText = `${cleanText.length} chars`;
+                document.getElementById('metricWords').innerText = `${cleanText.trim() === "" ? 0 : cleanText.trim().split(/\s+/).length} words`;
+                document.getElementById('metricSentences').innerText = `${(cleanText.match(/[.!?]+/g) || []).length} sentences`;
+            }
+
+            document.getElementById('qtyInput').addEventListener('input', updateText);
+            document.getElementById('themeSelect').addEventListener('change', updateText);
+            document.getElementById('edgeSpecial').addEventListener('change', updateText);
+            document.getElementById('edgeHtml').addEventListener('change', updateText);
+            document.getElementById('edgeZeroWidth').addEventListener('change', updateText);
+
+            function showToast(msg) {
+                const toast = document.getElementById('toast');
+                document.getElementById('toastMsg').innerText = msg;
+                toast.classList.remove('translate-y-20', 'opacity-0');
+                setTimeout(() => toast.classList.add('translate-y-20', 'opacity-0'), 2200);
+            }
+
+            document.getElementById('btnCopyText').addEventListener('click', function() {
+                navigator.clipboard.writeText(currentGeneratedText);
+                showToast("Text copied to clipboard!");
+            });
+
+            document.getElementById('btnCopyJson').addEventListener('click', function() {
+                const payload = JSON.stringify({
+                    theme: document.getElementById('themeSelect').value,
+                    unit: currentUnit,
+                    quantity: document.getElementById('qtyInput').value,
+                    data: currentGeneratedText
+                }, null, 2);
+                navigator.clipboard.writeText(payload);
+                showToast("JSON copied to clipboard!");
+            });
+
+            document.getElementById('btnDownloadText').addEventListener('click', function() {
+                const a = document.createElement("a");
+                a.href = URL.createObjectURL(new Blob([currentGeneratedText], { type: "text/plain" }));
+                a.download = `qa-test-data-${document.getElementById('themeSelect').value}.txt`;
+                a.click();
+                showToast("File downloaded!");
+            });
+
+            // Image Generator logic
+            function drawWrappedText(ctx, text, x, y, maxWidth, maxHeight, initialFontSize, fontColor) {
+                let fontSize = initialFontSize;
+                let lines = [];
+                let lineHeight = fontSize * 1.25;
+
+                while (fontSize >= 12) {
+                    ctx.font = `bold ${fontSize}px sans-serif`;
+                    lineHeight = fontSize * 1.25;
+                    lines = [];
+                    const words = text.split(' ');
+                    let currentLine = words[0] || '';
+
+                    for (let i = 1; i < words.length; i++) {
+                        const word = words[i];
+                        const testLine = currentLine + " " + word;
+                        if (ctx.measureText(testLine).width < maxWidth) {
+                            currentLine = testLine;
+                        } else {
+                            lines.push(currentLine);
+                            currentLine = word;
+                        }
+                    }
+                    lines.push(currentLine);
+
+                    const maxLineWidth = Math.max(...lines.map(l => ctx.measureText(l).width));
+                    const totalHeight = lines.length * lineHeight;
+
+                    if (maxLineWidth <= maxWidth && totalHeight <= maxHeight) break;
+                    fontSize -= 2;
+                }
+
+                ctx.fillStyle = fontColor;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+
+                const startY = y - ((lines.length - 1) * lineHeight) / 2;
+                lines.forEach((line, index) => {
+                    ctx.fillText(line, x, startY + index * lineHeight);
+                });
+            }
+
+            function renderImage() {
+                const canvas = document.getElementById('imageCanvas');
+                const ctx = canvas.getContext('2d');
+                const width = parseInt(document.getElementById('imgWidth').value) || 800;
+                const height = parseInt(document.getElementById('imgHeight').value) || 450;
+                const bgColor = document.getElementById('imgBgColor').value;
+                const textColor = document.getElementById('imgTextColor').value;
+                const pattern = document.getElementById('imgPattern').value;
+                const labelText = document.getElementById('imgLabel').value || `${width} x ${height}`;
+
+                canvas.width = width; canvas.height = height;
+                ctx.fillStyle = bgColor; ctx.fillRect(0, 0, width, height);
+
+                ctx.strokeStyle = textColor; ctx.globalAlpha = 0.15; ctx.lineWidth = 1;
+                if (pattern === 'grid') {
+                    for (let x = 0; x < width; x += 40) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke(); }
+                    for (let y = 0; y < height; y += 40) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y); ctx.stroke(); }
+                } else if (pattern === 'crosshairs') {
+                    ctx.beginPath(); ctx.moveTo(width / 2, 0); ctx.lineTo(width / 2, height); ctx.moveTo(0, height / 2); ctx.lineTo(width, height / 2); ctx.stroke();
+                } else if (pattern === 'diagonal') {
+                    const step = Math.max(20, Math.floor(Math.min(width, height) / 15));
+                    for (let x = -height; x < width; x += step) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + height, height); ctx.stroke(); }
+                }
+
+                ctx.globalAlpha = 1.0;
+                const maxWidth = width * 0.85;
+                const maxHeight = height * 0.85;
+                const initialFontSize = Math.max(18, Math.floor(Math.min(width, height) * 0.08));
+
+                drawWrappedText(ctx, labelText, width / 2, height / 2, maxWidth, maxHeight, initialFontSize, textColor);
+            }
+
+            document.querySelectorAll('.ratio-preset-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const ratioStr = this.getAttribute('data-aspect');
+                    if (ratioStr === '16:9') { document.getElementById('imgWidth').value = 1920; document.getElementById('imgHeight').value = 1080; }
+                    else if (ratioStr === '1:1') { document.getElementById('imgWidth').value = 500; document.getElementById('imgHeight').value = 500; }
+                    else if (ratioStr === '3:2') { document.getElementById('imgWidth').value = 1200; document.getElementById('imgHeight').value = 800; }
+                    else if (ratioStr === '9:16') { document.getElementById('imgWidth').value = 1080; document.getElementById('imgHeight').value = 1920; }
+                    else if (ratioStr === '3:1') { document.getElementById('imgWidth').value = 1200; document.getElementById('imgHeight').value = 400; }
+                    else if (ratioStr === '4:1') { document.getElementById('imgWidth').value = 1200; document.getElementById('imgHeight').value = 300; }
+
+                    document.querySelectorAll('.ratio-preset-btn').forEach(b => {
+                        b.className = 'ratio-preset-btn px-3 py-2 text-xs font-medium border rounded-xl transition border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700';
+                    });
+                    this.className = 'ratio-preset-btn px-3 py-2 text-xs font-medium border rounded-xl transition bg-blue-600 text-white border-blue-600 shadow-sm';
+                    renderImage();
+                });
+            });
+
+            document.getElementById('imgWidth').addEventListener('input', renderImage);
+            document.getElementById('imgHeight').addEventListener('input', renderImage);
+            document.getElementById('imgBgColor').addEventListener('change', renderImage);
+            document.getElementById('imgTextColor').addEventListener('change', renderImage);
+            document.getElementById('imgPattern').addEventListener('change', renderImage);
+            document.getElementById('imgLabel').addEventListener('input', renderImage);
+
+            document.getElementById('btnDownloadPng').addEventListener('click', function() {
+                const canvas = document.getElementById('imageCanvas');
+                const link = document.createElement('a');
+                link.download = `placeholder-${canvas.width}x${canvas.height}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                showToast("Downloaded PNG image!");
+            });
+
+            document.getElementById('btnCopyDataUri').addEventListener('click', function() {
+                navigator.clipboard.writeText(document.getElementById('imageCanvas').toDataURL());
+                showToast("Data URI copied!");
+            });
+
+            // Structured Data Generator
+            function updateFileData() {
+                const type = document.getElementById('fileTypeSelect').value;
+                const rowCount = parseInt(document.getElementById('fileRowCount').value);
+                document.getElementById('fileRowCountVal').innerText = rowCount;
+
+                document.getElementById('structuredOptions').classList.toggle('hidden', type === 'size_boundary' || type === 'zero_byte');
+                document.getElementById('sizeBoundaryOptions').classList.toggle('hidden', type !== 'size_boundary');
+                document.getElementById('zeroByteOptions').classList.toggle('hidden', type !== 'zero_byte');
+
+                const names = ["Alex Smith", "Jordan Lee", "Taylor Reed", "Morgan Vance", "Casey Wright"];
+                const statuses = ["ACTIVE", "PENDING", "INACTIVE", "SUSPENDED"];
+
+                if (type === 'pdf') {
+                    let pdfHeader = `%PDF-1.4\n1 0 obj <</Type /Catalog /Pages 2 0 R>> endobj\n2 0 obj <</Type /Pages /Kids [3 0 R] /Count 1>> endobj\n3 0 obj <</Type /Page /Parent 2 0 R /Resources <<>> /Contents 4 0 R>> endobj\n4 0 obj <</Length 120>> stream\nBT /F1 12 Tf 50 700 TD (QA Test Document - ${rowCount} Records Payload) Tj ET\nendstream\nendobj\nxref\n0 5\n0000000000 65535 f \n0000000009 00000 n \n0000000058 00000 n \n0000000115 00000 n \n0000000202 00000 n \ntrailer <</Size 5 /Root 1 0 R>>\nstartxref\n340\n%%EOF`;
+                    generatedFileContent = pdfHeader;
+                    generatedFileName = `qa-test-document-${rowCount}-rows.pdf`;
+                    generatedMimeType = "application/pdf";
+                } else if (type === 'doc') {
+                    let docText = `QA TEST DOCUMENT (.doc payload)\n=================================\nGenerated Rows: ${rowCount}\nDate: 2026-10-06\n\n`;
+                    for (let i = 1; i <= rowCount; i++) {
+                        const name = names[i % names.length];
+                        docText += `[Document Section #${i}]\nName: ${name}\nEmail: ${name.toLowerCase().replace(" ", ".")}@testdomain.qa\nStatus: ${statuses[i % statuses.length]}\nNotes: Automated QA sample document entry.\n\n`;
+                    }
+                    generatedFileContent = docText;
+                    generatedFileName = `qa-word-doc-${rowCount}-rows.doc`;
+                    generatedMimeType = "application/msword";
+                } else if (type === 'ppt') {
+                    let pptText = `QA TEST PRESENTATION (.ppt payload)\n=====================================\nTotal Slides: ${rowCount}\nGenerated Date: 2026-10-06\n\n`;
+                    for (let i = 1; i <= rowCount; i++) {
+                        pptText += `--- SLIDE ${i} ---\nTitle: Sample Slide Header #${i}\nSubtitle: Automated Test Data Slide Payload\nBullet 1: User Account - ${names[i % names.length]}\nBullet 2: System Status - ${statuses[i % statuses.length]}\n\n`;
+                    }
+                    generatedFileContent = pptText;
+                    generatedFileName = `qa-presentation-${rowCount}-slides.ppt`;
+                    generatedMimeType = "application/vnd.ms-powerpoint";
+                } else if (type === 'csv') {
+                    let csv = "ID,Full_Name,Email,Status,Created_At\n";
+                    for (let i = 1; i <= rowCount; i++) {
+                        const name = names[i % names.length];
+                        const email = `${name.toLowerCase().replace(" ", ".")}@testdomain.qa`;
+                        csv += `${1000 + i},"${name}",${email},${statuses[i % statuses.length]},2026-03-15\n`;
+                    }
+                    generatedFileContent = csv;
+                    generatedFileName = `qa-users-${rowCount}-rows.csv`;
+                    generatedMimeType = "text/csv";
+                } else if (type === 'json') {
+                    const arr = [];
+                    for (let i = 1; i <= rowCount; i++) {
+                        const name = names[i % names.length];
+                        arr.push({
+                            id: 1000 + i,
+                            name: name,
+                            email: `${name.toLowerCase().replace(" ", ".")}@testdomain.qa`,
+                            status: statuses[i % statuses.length],
+                            isTestAccount: true
+                        });
+                    }
+                    generatedFileContent = JSON.stringify(arr, null, 2);
+                    generatedFileName = `qa-payload-${rowCount}-records.json`;
+                    generatedMimeType = "application/json";
+                } else if (type === 'xml') {
+                    let xml = `<?xml version="1.0" encoding="UTF-8"?>\n<Users count="${rowCount}">\n`;
+                    for (let i = 1; i <= rowCount; i++) {
+                        const name = names[i % names.length];
+                        xml += `  <User id="${1000 + i}">\n    <Name>${name}</Name>\n    <Status>${statuses[i % statuses.length]}</Status>\n  </User>\n`;
+                    }
+                    xml += `</Users>`;
+                    generatedFileContent = xml;
+                    generatedFileName = `qa-records.xml`;
+                    generatedMimeType = "application/xml";
+                } else if (type === 'txt') {
+                    let txt = `QA TEST DATA FILE\n=================\nRow Count: ${rowCount}\nGenerated At: 2026-10-06\n\n`;
+                    for (let i = 1; i <= rowCount; i++) {
+                        txt += `[Record #${i}] Dugout inning out batter dinger line-drive umpire.\n`;
+                    }
+                    generatedFileContent = txt;
+                    generatedFileName = `qa-notes.txt`;
+                    generatedMimeType = "text/plain";
+                } else if (type === 'size_boundary') {
+                    const targetBytes = Math.floor(targetBoundaryMB * 1024 * 1024);
+                    const chunk = "QA_DUMMY_PAYLOAD_CHUNK_0123456789_\n";
+                    let str = "";
+                    while (str.length < targetBytes) str += chunk;
+                    generatedFileContent = str.substring(0, targetBytes);
+                    generatedFileName = `boundary-test-${targetBoundaryMB}MB.txt`;
+                    generatedMimeType = "text/plain";
+                } else if (type === 'zero_byte') {
+                    const ext = document.getElementById('zeroByteExt').value;
+                    generatedFileContent = "";
+                    generatedFileName = `empty-boundary-file.${ext}`;
+                    generatedMimeType = "application/octet-stream";
+                }
+
+                const previewEl = document.getElementById('fileContentPreview');
+                if (type === 'size_boundary') {
+                    previewEl.innerText = generatedFileContent.substring(0, 1000) + `\n\n... [Truncated ${targetBoundaryMB} MB Payload for UI Performance] ...`;
+                } else if (type === 'zero_byte') {
+                    previewEl.innerText = "[0-Byte Empty File Payload]";
+                } else {
+                    previewEl.innerText = generatedFileContent;
+                }
+
+                const bytes = new Blob([generatedFileContent]).size;
+                document.getElementById('fileSizeMetric').innerText = bytes > 1048576 
+                    ? `${(bytes / 1048576).toFixed(2)} MB` 
+                    : `${(bytes / 1024).toFixed(2)} KB (${bytes} bytes)`;
+            }
+
+            document.getElementById('fileTypeSelect').addEventListener('change', updateFileData);
+            document.getElementById('fileRowCount').addEventListener('input', updateFileData);
+            document.getElementById('zeroByteExt').addEventListener('change', updateFileData);
+
+            document.querySelectorAll('.size-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    targetBoundaryMB = parseFloat(this.getAttribute('data-size'));
+                    document.querySelectorAll('.size-btn').forEach(b => {
+                        b.className = 'size-btn px-3 py-2 text-xs font-medium border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-slate-50 transition';
+                    });
+                    this.className = 'size-btn px-3 py-2 text-xs font-medium border border-slate-200 dark:border-slate-700 rounded-xl bg-blue-600 text-white shadow-sm';
+                    updateFileData();
+                });
+            });
+
+            document.getElementById('btnDownloadFile').addEventListener('click', function() {
+                const blob = new Blob([generatedFileContent], { type: generatedMimeType });
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = generatedFileName;
+                a.click();
+                URL.revokeObjectURL(a.href);
+                showToast(`Downloaded ${generatedFileName}`);
+            });
+
+            document.getElementById('btnCopyFile').addEventListener('click', function() {
+                navigator.clipboard.writeText(generatedFileContent);
+                showToast("File content copied to clipboard!");
+            });
+
+            // Initial render
+            updateText();
+            renderImage();
+            updateFileData();
+        });
+    </script>
+</body>
+</html>
